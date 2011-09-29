@@ -1,5 +1,6 @@
 package
 {
+	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
@@ -7,12 +8,11 @@ package
 	 * ...
 	 * @author Mariusz Gliwiński
 	 */
-	public class Main extends Sprite 
+	public class Main extends MovieClip 
 	{
 		private var
 			_gui:Gui,
-			_map:Map,
-			_pathfinder:Pathfinder;
+			_map:Map;
 		
 		public function Main():void 
 		{
@@ -22,10 +22,12 @@ package
 		
 		private function init(e:Event = null):void 
 		{
+			haxe.init(this);
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+
 			_gui = new Gui(this);
 			_map = new Map(100, 100);
-			_pathfinder = new Pathfinder(_map);
+			_gui.mapComponent.map = _map;
 		}
 	}
 	

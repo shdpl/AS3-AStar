@@ -13,9 +13,6 @@ package
 		
 		public function Map(width:uint, height:uint)
 		{
-			var max:uint = uint.MAX_VALUE >> 1;
-			Utils.assert(width < max && height < max);
-			
 			_tiles = new Vector.<Tile>(width * height, true);
 			_width = width;
 			_height = height;
@@ -23,11 +20,15 @@ package
 			buildActors(10);
 		}
 		
+		/**
+		 * 
+		 * @param	probability	[0..1] of making an obstacle
+		 */
 		private function buildTerrain(probability:Number):void
 		{
 			for (var tid:uint; tid < _tiles.length; tid += 1) {
-				_tiles[tid] = new MapTile();
-				_tiles[tid].pathable = Math.random() >= probability;
+				_tiles[tid] = new Tile();
+				_tiles[tid]._pathability = Math.random() >= probability ? 1 : 0;
 			}
 		}
 		
@@ -38,10 +39,10 @@ package
 				var tid:uint;
 				do {
 					tid = Math.round(Math.random() * _width*_height);
-				} while (_tiles[tid].moveable);
+				} while (_tiles[tid]._dynamic);
 				
-				_tiles[tid].moveable = true; // making it more readable affects performance
-				_tiles[tid].pathable = false;
+				_tiles[tid]._dynamic = true; // making it more readable affects performance
+				_tiles[tid]._pathability = 0;
 			}
 		}
 		

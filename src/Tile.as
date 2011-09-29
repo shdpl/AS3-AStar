@@ -1,16 +1,19 @@
-package
+package  
 {
 	/**
 	 * ...
 	 * @author Mariusz Gliwiński
 	 */
-	internal interface Tile
+	public class Tile
 	{
-		function get moveable(): Boolean;
-		function set moveable(value:Boolean):void;
+		public var
+			_pathability:uint,
+			_dynamic:Boolean;
 		
-		function get pathable(): Boolean;
-		function set pathable(value:Boolean):void;
+		public function Tile() 
+		{
+			
+		}
 	}
 
 }

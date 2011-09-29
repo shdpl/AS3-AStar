@@ -1,68 +1,20 @@
 package  
 {
+	import de.polygonal.ds.Prioritizable;
+	
 	/**
 	 * ...
 	 * @author Mariusz Gliwiński
 	 */
-	public class AStarNode 
+	public class AStarNode implements Prioritizable
 	{
-		public var
-			g:float,
-			h:float,
-			f:float,
-			prev:AStarNode,
-			qt:QuadTree,
-			closed:Boolean;
-		
-		public function AStarNode(qt:QuadTree) 
+        public var priority:int;
+        public var position:int;
+
+        public function AStarNode(priority:int)
 		{
-			this.qt = qt;
-		}
-		
-		public function createNbourIter():IViewCursor
-		{
-			return new AStarNodeCursor
-		}
-		
+			this.priority = priority;
+        }
 	}
 
-}
-
-/**
-* ...
-* @author Mariusz Gliwiński
-*/
-internal class AStarNodeCursor implements IViewCursor 
-{
-	private var
-		_afterLast:Boolean,
-		_beforeFirst:Boolean = true,
-		_current:QuadTree;
-	
-	public function AStarNodeCursor() 
-	{
-		
-	}
-	
-	/* INTERFACE IViewCursor */
-	
-	public function get afterLast():Boolean 
-	{
-		return _afterLast;
-	}
-	
-	public function get beforeFirst():Boolean 
-	{
-		return _beforeFirst;
-	}
-	
-	public function get current():Object 
-	{
-		return _current;
-	}
-	
-	public function moveNext():Boolean 
-	{
-		return true;
-	}
 }
