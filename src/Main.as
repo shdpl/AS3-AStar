@@ -26,7 +26,7 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
 			_gui = new Gui(this);
-			_map = new Map(100, 100);
+			_map = new Map(6, 6);
 			_gui.mapComponent.map = _map;
 		}
 	}

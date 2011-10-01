@@ -7,6 +7,7 @@ package
 	import flash.geom.Matrix;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
+	import flash.display.MovieClip;
 	/**
 	 * ...
 	 * @author Mariusz Gliwiński
@@ -40,7 +41,7 @@ package
 			_scale = (stage.stageHeight - 20) / 2 / _map.height;
 			_mtrx.scale(_scale, _scale);
 			
-			// TODO: high performance clock?
+			// TODO: measure it?
 			_pathfinder = new StdPathfinder(_map);
 			//
 		}
@@ -80,9 +81,11 @@ package
 		
 		private function onNodeClick(e:MouseEvent):void
 		{
-			var len:uint = _waypoints.push(new Point(e.localX, e.localY));
+			var len:uint = _waypoints.push(new Point(	// Ugly as hell, but well..
+				Math.min(Math.round(e.localX / _scale), 99),
+				Math.min(Math.round(e.localY / _scale), 99)));
 			trace("waypoints: ", _waypoints);
-			if (len > 1)
+			if (len >= 2)
 			{
 				_path = _pathfinder.query(_waypoints[_waypoints.length - 2], _waypoints[_waypoints.length - 1]);
 				trace("path: ", _path);

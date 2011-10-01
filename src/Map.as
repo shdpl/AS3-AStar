@@ -38,7 +38,7 @@ package
 			for (var i:uint = 0; i < amount; i+=1 ) {
 				var tid:uint;
 				do {
-					tid = Math.round(Math.random() * _width*_height);
+					tid = Math.round(Math.random() * (_width*_height-1));
 				} while (_tiles[tid]._dynamic);
 				
 				_tiles[tid]._dynamic = true; // making it more readable affects performance
