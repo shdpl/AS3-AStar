@@ -67,6 +67,7 @@ package com.yyztom.pathfinding.astar
 			
 			
 			_openHeap.push(start);
+			_touched[i++] = start;
 			
 			while( _openHeap.size > 0 ){
 				currentNode = _openHeap.pop();
@@ -87,7 +88,6 @@ package com.yyztom.pathfinding.astar
 				}
 				
 				currentNode.closed = true;
-				_touched[i++] = currentNode;
 				
 				for each(neighbor in currentNode.neighbors)	{
 					if (neighbor.closed)
@@ -157,9 +157,9 @@ package com.yyztom.pathfinding.astar
 				d2 : int = pos1.y - pos0.y;
 			d1 = d1 < 0 ? -d1 : d1;
 			d2 = d2 < 0 ? -d2 : d2;
-			//diag = d1 < d2 ? d1 : d2;
+			var diag:int = d1 > d2 ? d1 : d2;
 			//return  Math.SQRT2 * diag + d1 + d2 - 2 * diag;
-			return d1 + d2;
+			return diag;
 		}
 		
 	}

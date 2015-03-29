@@ -91,8 +91,8 @@ package com.yyztom.pathfinding.astar
 			while (n > 0) {
 				
 				// Compute the parent element's index, and fetch it.
-				//var parentN : Number = ((n + 1) >> 1) -1 ;
-				var parentN : Number = _content.indexOf(element.parent);
+				var parentN : Number = ((n + 1) >> 1) -1 ;
+				//var parentN : Number = _content.indexOf(element.parent);
 				if (parentN == -1 ){
 					parentN = 0;
 				}
