@@ -113,6 +113,10 @@ com.yyztom.test.ui{
 				_grid[node2.position.x][node2.position.y].drawWasEvaluated();
 			}
 			
+			if (result == null) {
+				return;
+			}
+			
 			for each ( var node:AStarNodeVO in result )
 				_grid[node.position.x][node.position.y].drawForPath();
 			
