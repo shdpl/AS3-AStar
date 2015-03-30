@@ -118,7 +118,7 @@ package com.yyztom.pathfinding.astar
 				}
 			}
 			
-			return ret;
+			return null;
 		}
 		
 		
