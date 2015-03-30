@@ -157,8 +157,9 @@ package com.yyztom.pathfinding.astar
 				d2 : int = pos1.y - pos0.y;
 			d1 = d1 < 0 ? -d1 : d1;
 			d2 = d2 < 0 ? -d2 : d2;
-			var diag:int = d1 > d2 ? d1 : d2;
-			//return  Math.SQRT2 * diag + d1 + d2 - 2 * diag;
+			//var diag:int = Math.SQRT2 * diag + d1 + d2 - 2 * diag;
+			//var diag:int = d1 > d2 ? d1 : d2;
+			var diag:int = d1 + d2; // using of this heuristic might result with incorect results, see https://github.com/shdpl/AS3-AStar/pull/1
 			return diag;
 		}
 		
